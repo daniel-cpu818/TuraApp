@@ -1,0 +1,117 @@
+.container {
+
+  display: flex;
+  justify-content: center;
+
+  padding: 60px 20px;
+
+  background: #f7f7f7;
+
+  min-height: 100vh;
+}
+
+.formCard {
+
+  width: 100%;
+  max-width: 700px;
+
+  background: white;
+
+  padding: 40px;
+
+  border-radius: 24px;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.formCard h1 {
+
+  margin-bottom: 30px;
+}
+
+.formGroup {
+
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+
+  margin-bottom: 8px;
+
+  font-weight: 600;
+}
+
+.formGroup input,
+.formGroup textarea {
+
+  padding: 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+}
+
+.formGroup textarea {
+
+  min-height: 120px;
+
+  resize: vertical;
+}
+
+button {
+
+  width: 100%;
+
+  padding: 16px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #ff385c;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.formGroup select {
+
+  padding: 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+
+  background: white;
+}
+
+.previewContainer {
+
+  display: flex;
+  gap: 12px;
+
+  margin-top: 16px;
+
+  flex-wrap: wrap;
+}
+
+.previewImage {
+
+  width: 120px;
+  height: 120px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  border: 1px solid #ddd;
+}

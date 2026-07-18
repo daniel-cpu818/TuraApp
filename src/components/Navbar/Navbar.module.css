@@ -1,0 +1,328 @@
+/* ===== NAVBAR BASE ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 40px;
+
+  border-bottom: 1px solid #eee;
+  background-color: white;
+}
+/* ===== LOGO ===== */
+.logo h2 {
+  color: #ff385c;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* ===== SEARCH BAR ===== */
+.searchBar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  padding: 6px 10px;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.searchItem {
+  padding: 6px 10px;
+  font-size: 14px;
+  color: #444;
+  border-right: 1px solid #eee;
+  white-space: nowrap;
+}
+
+.searchItem:last-child {
+  border-right: none;
+}
+
+.searchBtn {
+  background-color: #ff385c;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== USER SECTION ===== */
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.searchInput{
+  width: 320px;
+  height: 46px;
+
+  padding: 0 18px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 999px;
+
+  background: white;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #222;
+
+  outline: none;
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Placeholder */
+.searchInput::placeholder{
+  color: #717171;
+  font-weight: 400;
+}
+
+/* Hover */
+.searchInput:hover{
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.12);
+
+  border-color: #d0d0d0;
+}
+
+/* Focus */
+.searchInput:focus{
+  border-color: #ff385c;
+
+  box-shadow:
+    0 0 0 4px rgba(255,56,92,0.15),
+    0 4px 14px rgba(0,0,0,0.12);
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+  .searchInput{
+    width: 100%;
+  }
+
+}
+/* Botón login */
+.loginBtn {
+  background-color: #ff385c;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.loginBtn:hover {
+  background-color: #e03150;
+}
+
+/* ===== USER MENU ===== */
+.userMenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.userMenu:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.userMenu::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+/* Avatar */
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===== DROPDOWN ===== */
+.dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: #d7d7d7;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 10px;
+  width: 180px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  display: none;
+  z-index: 100;
+}
+.logoLink {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.dropdown p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.dropdown button:hover {
+  background-color: #f5f5f5;
+}
+
+/* Mostrar dropdown */
+.userMenu:hover .dropdown {
+  display: block;
+}
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  backdrop-filter: blur(5px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.profileModal {
+  background: #ffffff;
+
+  width: 100%;
+  max-width: 420px;
+
+  padding: 32px;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15);
+
+  animation: modalFade 0.25s ease;
+}
+
+.modalTitle {
+  margin: 0;
+
+  font-size: 1.8rem;
+
+  font-weight: 700;
+
+  color: #222;
+}
+
+.modalText {
+  margin: 0;
+
+  color: #666;
+
+  line-height: 1.5;
+}
+
+.modalInput {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 12px;
+
+  font-size: 1rem;
+
+  transition: all 0.2s ease;
+}
+
+.modalInput:focus {
+  outline: none;
+
+  border-color: #ff385c;
+
+  box-shadow:
+    0 0 0 4px rgba(255, 56, 92, 0.15);
+}
+
+.modalButton {
+  border: none;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  background: #ff385c;
+
+  color: white;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.modalButton:hover {
+  background: #e53156;
+
+  transform: translateY(-2px);
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

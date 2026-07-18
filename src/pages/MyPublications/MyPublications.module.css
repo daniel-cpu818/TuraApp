@@ -1,0 +1,132 @@
+.container {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+
+.header {
+  margin-bottom: 35px;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: #717171;
+  font-size: 1rem;
+}
+
+.loading,
+.empty {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.empty h3 {
+  color: #777;
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 28px;
+}
+
+.cardContainer {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+  transition: .25s;
+}
+
+.cardContainer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  padding: 18px;
+  border-top: 1px solid #eee;
+}
+
+.actions button {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .25s;
+  font-size: .95rem;
+}
+
+.editButton {
+  background: #2563eb;
+  color: white;
+}
+
+.editButton:hover {
+  background: #1d4ed8;
+}
+
+.deleteButton {
+  background: #ef4444;
+  color: white;
+}
+
+.deleteButton:hover {
+  background: #dc2626;
+}
+
+.status {
+  display: inline-block;
+  margin: 16px 16px 0;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.inactive {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
