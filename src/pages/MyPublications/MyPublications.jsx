@@ -69,7 +69,7 @@ const MyPublications = () => {
   if (loading) {
     return (
       <div className={styles.loading}>
-        <h2>Cargando publicaciones...</h2>
+        <h2>Cargando publicaciones... </h2>
       </div>
     );
   }
