@@ -94,12 +94,12 @@ const SearchResults = ({
 
               image:
                 item.property.images?.length > 0
-                  ? `https://turaapi.onrender.com${item.property.images[0].url}`
+                  ? item.property.images[0].url
                   : "https://placehold.co/600x400"
 
             })
           );
-
+        console.log(propertiesArray[0].property.images);
         setProperties(
           mappedProperties
         );

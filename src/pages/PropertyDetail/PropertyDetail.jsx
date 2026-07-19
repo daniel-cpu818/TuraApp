@@ -71,7 +71,7 @@ const PropertyDetail = () => {
 
           image:
             data.property.images?.length > 0
-              ? `https://turaapi.onrender.com${data.property.images[0].url}`
+              ? data.property.images[0].url
               : "https://placehold.co/1200x800",
 
           images:
