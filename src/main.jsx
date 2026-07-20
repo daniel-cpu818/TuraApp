@@ -7,8 +7,8 @@ import "leaflet/dist/leaflet.css";
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-xkmh41n67u01oflw.us.auth0.com"
-      clientId="dfOEIv6TRct1s6hgx3DenKoqnVvwWGuY"
+      domain="dev-3cxwbg8epl8mf648.us.auth0.com"
+      clientId="BN6NNwjlDuAiJOxPHmViPZa1IbOkfwf8"
       authorizationParams={{
         redirect_uri: window.location.origin,
         audience: "https://bookingtura-api",
