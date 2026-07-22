@@ -275,13 +275,15 @@ const SearchResults = ({
   return (
 
     <div className={styles.container}>
+      <div className={styles.filtersContainer}>
 
       {/* FILTERS */}
       <Filters
         filters={filters}
         setFilters={setFilters}
         propertyTypes={propertyTypes}
-      />
+        />
+      </div>
 
       {/* CONTENT */}
       <div className={styles.content}>

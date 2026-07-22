@@ -262,87 +262,85 @@ const CreateProperty = () => {
 
 };
 
-  return (
 
-    <div className={styles.container}>
+return (
+  <div className={styles.container}>
 
-      <div className={styles.formCard}>
+    <div className={styles.formCard}>
 
-        <h1>
-          Publica tu alojamiento
-        </h1>
+      <h1>Publica tu alojamiento</h1>
 
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
 
-          {/* TITLE */}
-          <div className={styles.formGroup}>
-            <label>Título</label>
+        {/* TÍTULO */}
+        <div className={styles.formGroup}>
+          <label>Título</label>
 
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-          {/* DESCRIPTION */}
-          <div className={styles.formGroup}>
-            <label>Descripción</label>
+        {/* DESCRIPCIÓN */}
+        <div className={styles.formGroup}>
+          <label>Descripción</label>
 
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-          {/* PRICE */}
-          <div className={styles.formGroup}>
-            <label>Precio</label>
+        {/* PRECIO */}
+        <div className={styles.formGroup}>
+          <label>Precio</label>
 
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-          {/* HOOD */}
-          <div className={styles.formGroup}>
-            <label>Barrio</label>
+        {/* BARRIO */}
+        <div className={styles.formGroup}>
+          <label>Barrio</label>
 
-            <input
-              type="text"
-              name="hood"
-              value={formData.hood}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <input
+            type="text"
+            name="hood"
+            value={formData.hood}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-          {/* ADDRESS */}
-          <div className={styles.formGroup}>
-            <label>Dirección</label>
+        {/* DIRECCIÓN */}
+        <div className={styles.formGroup}>
+          <label>Dirección</label>
 
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-          {/* COMMUNE */}
-          <div className={styles.formGroup}>
-            <label>Comuna / Localidad</label>
+        {/* COMUNA */}
+        <div className={styles.formGroup}>
+          <label>Comuna / Localidad</label>
 
-            <input
+          <input
             type="number"
             name="commune"
             value={formData.commune}
@@ -351,95 +349,136 @@ const CreateProperty = () => {
             max="12"
             step="1"
             required
-            />
-          </div>
-
-          {/* FLOOR */}
-          <div className={styles.formGroup}>
-            <label>Piso</label>
-
-            <input
-              type="text"
-              name="piso"
-              value={formData.piso}
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* PROPERTY TYPE */}
-          <div className={styles.formGroup}>
-
-  <label>Tipo de propiedad</label>
-
-  <select
-    name="propertyTypeId"
-    value={formData.propertyTypeId}
-    onChange={handleChange}
-    required
-    >
-
-    <option value="">
-        Selecciona un tipo
-    </option>
-
-    {propertyTypes.map((type) => (
-
-        <option
-        key={type.id}
-        value={type.id}
-        >
-        {type.name}
-        </option>
-
-    ))}
-
-    </select>
-    <div className={styles.formGroup}>
-
-  <label>Imágenes</label>
-
-  <input
-    type="file"
-    multiple
-    accept="image/*"
-    onChange={handleImagesChange}
-  />
-
-</div>
-<div className={styles.previewContainer}>
-
-  {images.map((image, index) => (
-
-    <img
-      key={index}
-      src={URL.createObjectURL(image)}
-      alt="preview"
-      className={styles.previewImage}
-    />
-
-  ))}
-
-</div>
+          />
         </div>
 
-          {/* BUTTON */}
-          <button
-            type="submit"
-            disabled={loading}
+        {/* PISO */}
+        <div className={styles.formGroup}>
+          <label>Piso</label>
+
+          <input
+            type="text"
+            name="piso"
+            value={formData.piso}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* TIPO DE PROPIEDAD */}
+        <div className={styles.formGroup}>
+
+          <label>Tipo de propiedad</label>
+
+          <select
+            name="propertyTypeId"
+            value={formData.propertyTypeId}
+            onChange={handleChange}
+            required
           >
-            {
-              loading
-                ? "Creando..."
-                : "Crear propiedad"
-            }
-          </button>
 
-        </form>
+            <option value="">
+              Selecciona un tipo
+            </option>
 
-      </div>
+            {propertyTypes.map((type) => (
+              <option
+                key={type.id}
+                value={type.id}
+              >
+                {type.name}
+              </option>
+            ))}
+
+          </select>
+
+        </div>
+
+        {/* IMÁGENES */}
+        <div className={styles.formGroup}>
+
+          <label>Imágenes</label>
+
+          <label className={styles.fileUpload}>
+
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleImagesChange}
+            />
+
+            <div className={styles.uploadIcon}>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="34"
+                height="34"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+
+            </div>
+
+            <div className={styles.uploadTitle}>
+              Sube tus fotografías
+            </div>
+
+            <div className={styles.uploadText}>
+              Haz clic o arrastra las imágenes aquí
+              <br />
+              JPG • PNG • WEBP
+            </div>
+
+          </label>
+
+          {images.length > 0 && (
+            <p className={styles.selectedFile}>
+              ✅ {images.length} imagen(es) seleccionada(s)
+            </p>
+          )}
+
+          <div className={styles.previewContainer}>
+
+            {images.map((image, index) => (
+
+              <img
+                key={index}
+                src={URL.createObjectURL(image)}
+                alt={`preview-${index}`}
+                className={styles.previewImage}
+              />
+
+            ))}
+
+          </div>
+
+        </div>
+
+        {/* BOTÓN */}
+        <button
+          type="submit"
+          disabled={loading}
+        >
+          {loading
+            ? "Creando publicación..."
+            : "Publicar alojamiento"}
+        </button>
+
+      </form>
 
     </div>
-  );
+
+  </div>
+);
+
 };
 
 export default CreateProperty;

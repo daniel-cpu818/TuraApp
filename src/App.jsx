@@ -7,6 +7,7 @@ import EditPublication from "./pages/Edit/EditPublication";
 import MyPublications from "./pages/MyPublications/MyPublications";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Navbar from "./components/Navbar/Navbar";
+import Gallery from "./pages/PropertyDetail/Gallery/Gallery.jsx";
 import CreateProperty from "./pages/CreateProperty/CreateProperty";
 import SearchResults from "./pages/SearchResults/SearchResults";
 import PropertyDetail from "./pages/PropertyDetail/PropertyDetail";
@@ -42,7 +43,7 @@ function App() {
           path="/property/:id"
           element={
             <ProtectedRoute>
-              <PropertyDetail />
+              <PropertyDetail/>
             </ProtectedRoute>
           }
         />
@@ -51,20 +52,26 @@ function App() {
           path="/create-property"
           element={
             <ProtectedRoute>
-              <CreateProperty />
+              <CreateProperty/>
             </ProtectedRoute>
           }
         />
         {/* MY PUBLICATIONS */}
         <Route
           path="/my-publications"
-          element={<MyPublications />}
+          element={<MyPublications/>}
         />
 
         {/* update property */}
         <Route
         path="/edit-publication/:id"
         element={<EditPublication/>}
+        />
+
+        {/* Gallery */}
+        <Route
+        path="/property/:id/gallery"
+        element={<Gallery/>}
         />
 
       </Routes>

@@ -180,17 +180,21 @@ const handleCompleteProfile =
     <nav className={styles.navbar}>
 
       {/* 🔴 LOGO */}
-      <div className={styles.logo}>
-        <Link
-          to="/"
-          className={styles.logoLink}
-        >
-          PuertoHogar
-        </Link>
-      </div>
+    <div className={styles.logo}>
+      <Link
+        to="/"
+        className={styles.logoLink}
+      >
+        <img
+          src="/Logotipo.png"
+          alt="PuertoHogar"
+          className={styles.logoImage}
+        />
+      </Link>
+    </div>
 
       {/* 🔍 QUICK SEARCH */}
-      <div>
+      {/* <div>
         <input
           type="text"
           placeholder="Buscar propiedades..."
@@ -200,7 +204,7 @@ const handleCompleteProfile =
           }
           className={styles.searchInput}
         />
-      </div>
+      </div> */}
 
       {/* 👤 USER */}
       <div className={styles.userSection}>

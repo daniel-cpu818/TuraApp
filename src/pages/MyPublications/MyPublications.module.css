@@ -1,7 +1,9 @@
 .container {
   max-width: 1400px;
-  margin: 40px auto;
-  padding: 0 30px;
+  margin: 0 auto;
+  padding: 40px;
+  background: var(--bg);
+  min-height: 100vh;
 }
 
 .header {
@@ -10,118 +12,203 @@
 
 .header h1 {
   font-size: 2.2rem;
-  color: #222;
+  font-weight: 700;
+  color: var(--text-h);
   margin-bottom: 8px;
 }
 
 .header p {
-  color: #717171;
-  font-size: 1rem;
+  color: var(--text);
 }
+
+/* ==========================
+   STATES
+========================== */
 
 .loading,
 .empty {
   min-height: 60vh;
+
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+
+  color: var(--text);
 }
 
 .empty h3 {
-  color: #777;
-  font-weight: 500;
+  color: var(--text);
 }
+
+/* ==========================
+   GRID
+========================== */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 28px;
+  gap: 30px;
 }
 
+/* ==========================
+   CARD
+========================== */
+
 .cardContainer {
-  background: #fff;
-  border-radius: 20px;
+  background: #1d1e24;
+
+  border: 1px solid var(--border);
+
+  border-radius: 22px;
+
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
-  transition: .25s;
+
+  transition: .3s;
+
+  box-shadow: var(--shadow);
 }
 
 .cardContainer:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+  transform: translateY(-6px);
+  border-color: #4b5563;
 }
 
-.actions {
-  display: flex;
-  gap: 12px;
-  padding: 18px;
-  border-top: 1px solid #eee;
-}
-
-.actions button {
-  flex: 1;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: .25s;
-  font-size: .95rem;
-}
-
-.editButton {
-  background: #2563eb;
-  color: white;
-}
-
-.editButton:hover {
-  background: #1d4ed8;
-}
-
-.deleteButton {
-  background: #ef4444;
-  color: white;
-}
-
-.deleteButton:hover {
-  background: #dc2626;
-}
+/* ==========================
+   STATUS
+========================== */
 
 .status {
-  display: inline-block;
-  margin: 16px 16px 0;
-  padding: 6px 14px;
-  border-radius: 30px;
-  font-size: .85rem;
+  display: inline-flex;
+
+  margin: 18px;
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+
+  font-size: .8rem;
+
   font-weight: 600;
 }
 
 .active {
-  background: #dcfce7;
-  color: #15803d;
+  background: rgba(34,197,94,.15);
+  color: #4ade80;
 }
 
 .inactive {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: rgba(239,68,68,.15);
+  color: #f87171;
 }
 
+/* ==========================
+   ACTIONS
+========================== */
+
+.actions {
+  display: flex;
+
+  gap: 12px;
+
+  padding: 18px;
+
+  border-top: 1px solid var(--border);
+}
+
+.actions button {
+
+  flex: 1;
+
+  padding: 13px;
+
+  border-radius: 12px;
+
+  border: none;
+
+  font-size: .95rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+/* EDIT */
+
+.editButton {
+
+  background: #2c2d34;
+
+  color: white;
+}
+
+.editButton:hover {
+
+  background: #3b3d46;
+
+  transform: translateY(-2px);
+}
+
+/* DELETE */
+
+.deleteButton {
+
+  background: #8b1d1d;
+
+  color: white;
+}
+
+.deleteButton:hover {
+
+  background: #a11f1f;
+
+  transform: translateY(-2px);
+}
+
+/* ==========================
+   TABLET
+========================== */
+
 @media (max-width: 900px) {
+
   .container {
-    padding: 0 20px;
+    padding: 25px;
+  }
+
+  .header h1 {
+    font-size: 1.9rem;
   }
 
   .grid {
     grid-template-columns: 1fr;
   }
 
-  .header h1 {
-    font-size: 1.8rem;
-  }
 }
 
-@media (max-width: 500px) {
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 18px;
+  }
+
+  .header {
+    margin-bottom: 25px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .grid {
+    gap: 20px;
+  }
+
   .actions {
     flex-direction: column;
   }
@@ -129,4 +216,17 @@
   .actions button {
     width: 100%;
   }
+
+}
+
+@media (max-width: 420px) {
+
+  .container {
+    padding: 14px;
+  }
+
+  .header h1 {
+    font-size: 1.45rem;
+  }
+
 }

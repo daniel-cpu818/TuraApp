@@ -17,69 +17,79 @@ const Filters = ({
 
   return (
 
-    <div className={styles.filters}>
+ <div className={styles.filters}>
 
-      {/* búsqueda */}
-      <input
-        type="text"
-        name="search"
-        placeholder="Buscar..."
-        value={filters.search}
-        onChange={handleChange}
-      />
+  {/* Tipo de propiedad */}
+  <div className={styles.filterItem}>
+    
 
-      {/* tipo */}
-      <select
-        name="propertyTypeId"
-        value={filters.propertyTypeId}
-        onChange={handleChange}
-      >
+    <select
+      name="propertyTypeId"
+      value={filters.propertyTypeId}
+      onChange={handleChange}
+    >
+      <option value="">Todos los tipos</option>
 
-        <option value="">
-          Todos los tipos
+      {propertyTypes.map(type => (
+        <option
+          key={type.id}
+          value={type.id}
+        >
+          {type.name}
         </option>
+      ))}
+    </select>
+  </div>
 
-        {propertyTypes.map((type) => (
+  {/* Precio mínimo */}
+  <div className={styles.filterItem}>
+    <span>$</span>
 
-          <option
-            key={type.id}
-            value={type.id}
-          >
-            {type.name}
-          </option>
+    <input
+      type="number"
+      name="minPrice"
+      placeholder="Precio mínimo"
+      value={filters.minPrice}
+      onChange={handleChange}
+    />
+  </div>
 
-        ))}
+  {/* Precio máximo */}
+  <div className={styles.filterItem}>
+    <span>$</span>
 
-      </select>
+    <input
+      type="number"
+      name="maxPrice"
+      placeholder="Precio máximo"
+      value={filters.maxPrice}
+      onChange={handleChange}
+    />
+  </div>
 
-      {/* precio mínimo */}
-      <input
-        type="number"
-        name="minPrice"
-        placeholder="Precio mínimo"
-        value={filters.minPrice}
-        onChange={handleChange}
-      />
+  {/* Comuna */}
+  <div className={styles.filterItem}>
+    
 
-      {/* precio máximo */}
-      <input
-        type="number"
-        name="maxPrice"
-        placeholder="Precio máximo"
-        value={filters.maxPrice}
-        onChange={handleChange}
-      />
+    <select
+      name="commune"
+      value={filters.commune}
+      onChange={handleChange}
+    >
+      <option value="">Todas las comunas</option>
 
-      {/* comuna */}
-      <input
-        type="number"
-        name="commune"
-        placeholder="Comuna"
-        value={filters.commune}
-        onChange={handleChange}
-      />
+      {[...Array(12)].map((_, index) => (
+        <option
+          key={index + 1}
+          value={index + 1}
+        >
+          Comuna {index + 1}
+        </option>
+      ))}
+    </select>
+  </div>
 
-    </div>
+</div>
   );
 };
 

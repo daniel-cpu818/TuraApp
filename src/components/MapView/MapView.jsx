@@ -3,16 +3,18 @@ import {
   TileLayer,
   Marker,
   Popup,
-  useMap
+  useMap,
 } from "react-leaflet";
 
 import { useEffect } from "react";
-
 import L from "leaflet";
 
 import styles from "./MapView.module.css";
 
-// FIX ICONS
+// =======================
+// Leaflet Icons
+// =======================
+
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -26,94 +28,153 @@ L.Icon.Default.mergeOptions({
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-// 🔥 mover mapa automáticamente
+// =======================
+// FlyTo
+// =======================
+
 const FlyToProperty = ({ property }) => {
 
-  const map = useMap();
+    const map = useMap();
 
-  useEffect(() => {
+    useEffect(() => {
 
-    if (property) {
+        if (!property) return;
 
-      map.flyTo(property.position, 14, {
-        duration: 1.5,
-      });
+        const lat = Number(property.latitude);
+        const lng = Number(property.longitude);
 
-    }
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+            console.warn("FlyTo cancelado:", lat, lng);
+            return;
+        }
 
-  }, [property]);
+        map.flyTo([lat, lng], 15, {
+            duration: 1.5,
+        });
 
-  return null;
+    }, [property, map]);
+
+    return null;
 };
 
+// =======================
+// COMPONENTE
+// =======================
+
 const MapView = ({
-  properties,
+  properties = [],
   selectedProperty,
-  setSelectedProperty
+  setSelectedProperty,
 }) => {
 
-  const center = [4.7110, -74.0721];
+  const center = [3.8772, -77.0263];
 
-  // 🔥 generar coords fake temporales
+  console.log("============ TODAS ============");
+  console.log(properties);
+
   const propertiesWithCoords = properties
-    .filter(
-      (property) =>
-        property.latitude != null &&
-        property.longitude != null
-    )
-    .map((property) => ({
-      ...property,
+    .map((property) => {
 
-      position: [
-        property.latitude,
-        property.longitude,
-      ],
-    }));
+      const lat =
+        property.latitude === null
+          ? null
+          : parseFloat(property.latitude);
+
+      const lng =
+        property.longitude === null
+          ? null
+          : parseFloat(property.longitude);
+
+      console.log("-------------------------");
+      console.log("Título:", property.title);
+      console.log("Latitude:", property.latitude);
+      console.log("Longitude:", property.longitude);
+      console.log("Lat parse:", lat);
+      console.log("Lng parse:", lng);
+
+      return {
+        ...property,
+
+        latitude: lat,
+        longitude: lng,
+
+        position:
+          lat !== null &&
+          lng !== null &&
+          Number.isFinite(lat) &&
+          Number.isFinite(lng)
+            ? [lat, lng]
+            : null,
+      };
+
+    })
+    .filter((property) => {
+
+      const valid = property.position !== null;
+
+      if (!valid) {
+        console.warn(
+          "Publicación sin coordenadas:",
+          property.title
+        );
+      }
+
+      return valid;
+
+    });
+
+  console.log("========== FILTRADAS ==========");
+  console.log(propertiesWithCoords);
 
   const activeProperty =
-    propertiesWithCoords[selectedProperty];
+    Number.isInteger(selectedProperty) &&
+    selectedProperty >= 0 &&
+    selectedProperty < propertiesWithCoords.length
+        ? propertiesWithCoords[selectedProperty]
+        : null;
 
   return (
-
     <div className={styles.mapContainer}>
 
       <MapContainer
         center={center}
-        zoom={12}
-        scrollWheelZoom={true}
+        zoom={13}
+        scrollWheelZoom
         className={styles.map}
       >
 
         <TileLayer
-          attribution='&copy; OpenStreetMap'
+          attribution="© OpenStreetMap"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {/* 🔥 centrar automáticamente */}
         <FlyToProperty property={activeProperty} />
 
-        {propertiesWithCoords.map(
-          (property, index) => (
+        {propertiesWithCoords.map((property, index) => (
 
-            <Marker
-              key={index}
-              position={property.position}
+          <Marker
+            key={property.id ?? index}
+            position={property.position}
+            eventHandlers={{
+              click: () => setSelectedProperty(index),
+            }}
+          >
 
-              eventHandlers={{
-                click: () =>
-                  setSelectedProperty(index),
-              }}
-            >
+            <Popup>
 
-              <Popup>
-                <strong>{property.title}</strong>
-                <br />
-                ${property.price}
-              </Popup>
+              <strong>
+                {property.title}
+              </strong>
 
-            </Marker>
-          )
-        )}
+              <br />
+
+              ${property.price?.toLocaleString("es-CO")}
+
+            </Popup>
+
+          </Marker>
+
+        ))}
 
       </MapContainer>
 

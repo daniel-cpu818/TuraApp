@@ -1,18 +1,33 @@
+import styles from "./MainLayout.module.css";
 import Navbar from "../components/Navbar/Navbar";
-import SearchResults from "../pages/SearchResults/SearchResults";
 
-const MainLayout = ({ children }) => {
-  return (
-    <>
-      <Navbar  quickFilter={quickFilter}
-      setQuickFilter={setQuickFilter}
-      />
-      <main>{children}</main>
-      <SearchResults
-        quickFilter={quickFilter}
-      />
-    </>
-  );
+const MainLayout = ({
+    children,
+    quickFilter,
+    setQuickFilter,
+    search,
+    setSearch,
+}) => {
+
+    return (
+
+        <div className={styles.layout}>
+
+            <Navbar
+                quickFilter={quickFilter}
+                setQuickFilter={setQuickFilter}
+                search={search}
+                setSearch={setSearch}
+            />
+
+            <main className={styles.main}>
+                {children}
+            </main>
+
+        </div>
+
+    );
+
 };
 
 export default MainLayout;

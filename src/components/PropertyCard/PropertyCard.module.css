@@ -1,91 +1,255 @@
-/* ===== CARD ===== */
+/* ===========================
+   CARD
+=========================== */
+
 .card {
-  width: 100%;
-  max-width: 420px;
-  margin-bottom: 30px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
 
-.card:hover {
-  transform: scale(1.01);
-}
-
-/* ===== IMAGE ===== */
-.imageContainer {
-  position: relative;
   width: 100%;
-  height: 250px;
-  border-radius: 18px;
+
+  background: #1b1c22;
+
+  border: 1px solid rgba(255,255,255,.05);
+
+  border-radius: 22px;
+
   overflow: hidden;
-}
 
-.imageContainer img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  transition: .35s;
 
-/* ❤️ Favorite button */
-.favoriteBtn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.9);
   cursor: pointer;
-  font-size: 18px;
 }
 
-/* ===== INFO ===== */
-.info {
-  margin-top: 12px;
+.card:hover{
+
+  transform: translateY(-6px);
+
+  border-color: rgba(255,255,255,.12);
+
+  box-shadow:
+      0 25px 45px rgba(0,0,0,.35);
 }
 
-/* Top row */
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* ===========================
+   IMAGE
+=========================== */
+
+.imageContainer{
+
+  position:relative;
+
+  width:100%;
+
+  height:260px;
+
+  overflow:hidden;
 }
 
-.top h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
+.imageContainer img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  transition:.6s;
 }
 
-.rating {
-  font-size: 14px;
+.card:hover img{
+
+  transform:scale(1.06);
 }
 
-/* Location */
-.location {
-  color: #717171;
-  font-size: 14px;
-  margin: 4px 0;
+/* ===========================
+   FAVORITE
+=========================== */
+
+.favoriteBtn{
+
+  position:absolute;
+
+  top:18px;
+
+  right:18px;
+
+  width:42px;
+
+  height:42px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(20,20,20,.75);
+
+  backdrop-filter:blur(12px);
+
+  color:white;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  transition:.3s;
 }
 
-/* Details */
-.details {
-  color: #717171;
-  font-size: 13px;
-  margin: 4px 0;
+.favoriteBtn:hover{
+
+  background:white;
+
+  color:black;
+
+  transform:scale(1.1);
 }
 
-/* Price */
-.price {
-  margin-top: 8px;
-  font-size: 15px;
+/* ===========================
+   INFO
+=========================== */
+
+.info{
+
+  padding:20px;
 }
 
-.activeCard {
-  transform: scale(1.02);
+/* ===========================
+   HEADER
+=========================== */
+
+.top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  gap:15px;
 }
 
-.activeCard .imageContainer {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.top h3{
+
+  margin:0;
+
+  color:var(--text-h);
+
+  font-size:1.08rem;
+
+  font-weight:700;
+
+  line-height:1.4;
+}
+
+.rating{
+
+  color:#FFD54A;
+
+  font-size:.95rem;
+
+  white-space:nowrap;
+}
+
+/* ===========================
+   LOCATION
+=========================== */
+
+.location{
+
+  margin-top:10px;
+
+  color:#9ca3af;
+
+  font-size:.92rem;
+}
+
+/* ===========================
+   DETAILS
+=========================== */
+
+.details{
+
+  margin-top:6px;
+
+  color:#6b7280;
+
+  font-size:.88rem;
+
+  line-height:1.5;
+}
+
+/* ===========================
+   PRICE
+=========================== */
+
+.price{
+
+  margin-top:18px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+}
+
+.price strong{
+
+  color:white;
+
+  font-size:1.35rem;
+
+  font-weight:700;
+}
+
+.price span{
+
+  color:#9ca3af;
+
+  font-size:.9rem;
+}
+
+/* ===========================
+   ACTIVE
+=========================== */
+
+.activeCard{
+
+  border-color:white;
+
+  transform:translateY(-6px);
+
+  box-shadow:
+      0 25px 45px rgba(0,0,0,.45);
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+  .card{
+
+      border-radius:18px;
+  }
+
+  .imageContainer{
+
+      height:220px;
+  }
+
+  .info{
+
+      padding:16px;
+  }
+
+  .top h3{
+
+      font-size:1rem;
+  }
+
+  .price strong{
+
+      font-size:1.15rem;
+  }
+
 }

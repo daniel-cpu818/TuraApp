@@ -1,328 +1,496 @@
-/* ===== NAVBAR BASE ===== */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+/* ===========================
+   NAVBAR
+=========================== */
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navbar{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
 
-  padding: 16px 40px;
+    width:94%;
 
-  border-bottom: 1px solid #eee;
-  background-color: white;
+    z-index:1000;
+
+    height:74px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 32px;
+
+    background:transparent;
+
+    border:none;
+    box-shadow:none;
+
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
 }
-/* ===== LOGO ===== */
-.logo h2 {
-  color: #ff385c;
-  cursor: pointer;
-  margin: 0;
+
+/* ===========================
+   LOGO
+=========================== */
+
+.logo{
+    display:flex;
+    align-items:center;
 }
 
-/* ===== SEARCH BAR ===== */
+.logoLink{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+}
+
+.logoImage{
+    height:122px;
+    width:auto;
+    padding-top: 25%;
+
+    object-fit:contain;
+
+    display:block;
+
+    transition:.25s;
+}
+
+.logoImage:hover{
+    transform:scale(1.04);
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
 .searchBar {
+  flex: 1;
+
   display: flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 40px;
-  padding: 6px 10px;
-  gap: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.searchItem {
-  padding: 6px 10px;
-  font-size: 14px;
-  color: #444;
-  border-right: 1px solid #eee;
-  white-space: nowrap;
-}
-
-.searchItem:last-child {
-  border-right: none;
-}
-
-.searchBtn {
-  background-color: #ff385c;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 34px;
-  height: 34px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
   justify-content: center;
+
+  padding: 0 40px;
 }
 
-/* ===== USER SECTION ===== */
-.userSection {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.searchInput{
-  width: 320px;
-  height: 46px;
+.searchInput {
+
+  width: 100%;
+  max-width: 520px;
+
+  height: 48px;
 
   padding: 0 18px;
 
-  border: 1px solid #e5e5e5;
-  border-radius: 999px;
+  border-radius: 14px;
 
-  background: white;
+  border: 1px solid #2d2d2d;
 
-  font-size: 14px;
-  font-weight: 500;
+  background: #1a1a1a;
 
-  color: #222;
+  color: #fff;
+
+  font-size: .95rem;
+
+  transition: .25s;
+
+}
+
+.searchInput::placeholder {
+  color: #8d8d8d;
+}
+
+.searchInput:hover {
+
+  border-color: #444;
+
+}
+
+.searchInput:focus {
 
   outline: none;
 
-  transition: all 0.25s ease;
+  border-color: #6b7280;
+
+  background: #202020;
 
   box-shadow:
-    0 2px 8px rgba(0,0,0,0.08);
-}
-
-/* Placeholder */
-.searchInput::placeholder{
-  color: #717171;
-  font-weight: 400;
-}
-
-/* Hover */
-.searchInput:hover{
-  box-shadow:
-    0 4px 14px rgba(0,0,0,0.12);
-
-  border-color: #d0d0d0;
-}
-
-/* Focus */
-.searchInput:focus{
-  border-color: #ff385c;
-
-  box-shadow:
-    0 0 0 4px rgba(255,56,92,0.15),
-    0 4px 14px rgba(0,0,0,0.12);
-}
-
-/* Mobile */
-@media(max-width:768px){
-
-  .searchInput{
-    width: 100%;
-  }
+      0 0 0 4px rgba(255,255,255,.04);
 
 }
-/* Botón login */
+
+/* ===========================
+   USER
+=========================== */
+
+.userSection {
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+}
+
+/* ===========================
+   LOGIN
+=========================== */
+
 .loginBtn {
-  background-color: #ff385c;
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
+
+  border: 1px solid #303030;
+
+  background: #fff;
+
+  color: #111;
+
+  padding: 10px 18px;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
   cursor: pointer;
-  font-weight: 500;
-  transition: background 0.2s ease;
+
+  transition: .25s;
+
 }
 
 .loginBtn:hover {
-  background-color: #e03150;
+
+  background: #ececec;
+
 }
 
-/* ===== USER MENU ===== */
+/* ===========================
+   USER MENU
+=========================== */
+
 .userMenu {
+
   position: relative;
+
   display: flex;
   align-items: center;
-  gap: 8px;
-  border: 1px solid #ddd;
-  padding: 6px 10px;
-  border-radius: 20px;
+  gap: 12px;
+
+  padding: 8px 10px;
+
+  border-radius: 14px;
+
+  border: 1px solid #2d2d2d;
+
+  background: #1a1a1a;
+
   cursor: pointer;
-  transition: box-shadow 0.2s ease;
+
+  transition: .25s;
+
 }
 
 .userMenu:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.userMenu::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  height: 10px;
+
+  background: #232323;
+
+  border-color: #3d3d3d;
+
 }
 
-/* Avatar */
 .avatar {
-  width: 30px;
-  height: 30px;
+
+  width: 38px;
+  height: 38px;
+
   border-radius: 50%;
+
   object-fit: cover;
+
 }
 
-/* ===== DROPDOWN ===== */
+/* ===========================
+   DROPDOWN
+=========================== */
+
 .dropdown {
+
   position: absolute;
-  top: 48px;
+
+  top: 62px;
   right: 0;
-  background: #d7d7d7;
-  border: 1px solid #eee;
-  border-radius: 12px;
+
+  width: 230px;
+
+  background: #181818;
+
+  border: 1px solid #2d2d2d;
+
+  border-radius: 18px;
+
   padding: 10px;
-  width: 180px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
   display: none;
-  z-index: 100;
-}
-.logoLink {
-  text-decoration: none;
-  color: inherit;
-  font-size: 1.5rem;
-  font-weight: 700;
+
+  box-shadow:
+      0 18px 40px rgba(0,0,0,.35);
+
 }
 
-.dropdown p {
-  margin: 0 0 8px 0;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.dropdown button {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.dropdown button:hover {
-  background-color: #f5f5f5;
-}
-
-/* Mostrar dropdown */
 .userMenu:hover .dropdown {
   display: block;
 }
+
+.dropdown p {
+
+  color: #cfcfcf;
+
+  margin: 12px;
+
+  font-size: .9rem;
+
+}
+
+.dropdown button {
+
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: transparent;
+
+  color: #d8d8d8;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+}
+
+.dropdown button:hover {
+
+  background: #2b2b2b;
+
+  color: white;
+
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
 .modalOverlay {
+
   position: fixed;
+
   inset: 0;
-
-  background: rgba(0, 0, 0, 0.6);
-
-  backdrop-filter: blur(5px);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
+  background: rgba(0,0,0,.75);
+
+  backdrop-filter: blur(12px);
+
   z-index: 9999;
+
 }
 
 .profileModal {
-  background: #ffffff;
 
   width: 100%;
   max-width: 420px;
 
   padding: 32px;
 
-  border-radius: 20px;
+  border-radius: 22px;
 
-  text-align: center;
+  background: #181818;
+
+  border: 1px solid #2d2d2d;
 
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.15);
+  color: white;
 
-  animation: modalFade 0.25s ease;
+  animation: modal .25s ease;
+
 }
+.dropdownLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
-.modalTitle {
-  margin: 0;
-
-  font-size: 1.8rem;
-
-  font-weight: 700;
-
-  color: #222;
-}
-
-.modalText {
-  margin: 0;
-
-  color: #666;
-
-  line-height: 1.5;
-}
-
-.modalInput {
   width: 100%;
 
   padding: 14px 16px;
 
-  border: 1px solid #ddd;
+  color: #d4d4d8;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
 
   border-radius: 12px;
 
-  font-size: 1rem;
+  transition: all .25s ease;
 
-  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.dropdownLink:hover {
+  background: rgba(255,255,255,.06);
+
+  color: #ffffff;
+
+  transform: translateX(4px);
+}
+
+.dropdownLink:active {
+  transform: scale(.98);
+}
+
+.dropdownLink svg,
+.dropdownLink i {
+  font-size: 18px;
+
+  color: #8b8b93;
+
+  transition: .25s;
+}
+
+.dropdownLink:hover svg,
+.dropdownLink:hover i {
+  color: white;
+}
+
+.dropdownLink.logout {
+  color: #ef4444;
+}
+
+.dropdownLink.logout svg,
+.dropdownLink.logout i {
+  color: #ef4444;
+}
+
+.dropdownLink.logout:hover {
+  background: rgba(239,68,68,.12);
+
+  color: #ff6b6b;
+}
+
+.modalTitle {
+
+  margin: 0;
+
+  font-size: 1.7rem;
+
+}
+
+.modalText {
+
+  color: #9ca3af;
+
+}
+
+.modalInput {
+
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  border: 1px solid #2d2d2d;
+
+  background: #232323;
+
+  color: white;
+
 }
 
 .modalInput:focus {
+
   outline: none;
 
-  border-color: #ff385c;
+  border-color: #666;
 
-  box-shadow:
-    0 0 0 4px rgba(255, 56, 92, 0.15);
 }
 
 .modalButton {
-  border: none;
 
   padding: 14px;
 
   border-radius: 12px;
 
-  background: #ff385c;
+  border: none;
 
-  color: white;
+  background: white;
 
-  font-size: 1rem;
+  color: black;
 
   font-weight: 600;
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
+  transition: .25s;
+
 }
 
 .modalButton:hover {
-  background: #e53156;
 
-  transform: translateY(-2px);
+  background: #dedede;
+
 }
 
-@keyframes modalFade {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
+/* ===========================
+   RESPONSIVE
+=========================== */
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@media (max-width:900px){
+
+.navbar{
+
+padding:0 18px;
+
+}
+
+.searchBar{
+
+display:none;
+
+}
+
+.logo h2{
+
+font-size:1.25rem;
+
+}
+
+.loginBtn{
+
+padding:10px 14px;
+
+}
+
+}
+
+@media (max-width:600px){
+
+.navbar{
+
+height:68px;
+
+}
+
+.avatar{
+
+width:34px;
+height:34px;
+
+}
+
 }
