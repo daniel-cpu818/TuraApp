@@ -39,85 +39,81 @@ const SearchResults = ({
   // 🔥 LOAD PROPERTIES
   useEffect(() => {
 
-    const loadProperties = async () => {
+  const loadProperties = async () => {
 
-      try {
+    setLoading(true);
 
-        const response = await fetch(
-          "https://turaapi.onrender.com/api/publications"
-        );
+    try {
 
-        const data =
-          await response.json();
+      const response = await fetch(
+        "https://turaapi.onrender.com/api/publications"
+      );
 
-        const propertiesArray =
-          data.$values || data;
-
-        const mappedProperties =
-          propertiesArray.map(
-            (item, index) => ({
-
-              id: item.id,
-
-              propertyId: item.property.id,
-
-              title:
-                item.property.title,
-
-              city:
-                item.property.hood,
-
-              country:
-                "Colombia",
-
-              price:
-                item.property.price,
-
-              description:
-                item.property.description,
-
-              ownerPhone:
-                item.property.ownerPhone,
-
-              address:
-                item.property.address,
-
-              latitude: item.property.latitude,
-
-              longitude: item.property.longitude,
-
-              propertyTypeId:
-                item.property.propertyTypeId,
-
-              commune:
-                item.property.commune,
-
-              image:
-                item.property.images?.length > 0
-                  ? item.property.images[0].url
-                  : "https://placehold.co/600x400"
-
-            })
-          );
-        console.log(propertiesArray[0].property.images);
-        setProperties(
-          mappedProperties
-        );
-
-      } catch (error) {
-
-        console.error(error);
-
-      } finally {
-
-        setLoading(false);
-
+      if (!response.ok) {
+        throw new Error("Error cargando publicaciones");
       }
-    };
 
-    loadProperties();
+      const data = await response.json();
 
-  }, []);
+      const propertiesArray = data.$values || data;
+
+      const mappedProperties = propertiesArray.map((item) => ({
+
+        id: item.id,
+
+        propertyId: item.property.id,
+
+        title: item.property.title,
+
+        city: item.property.hood,
+
+        country: "Colombia",
+
+        price: item.property.price,
+
+        description: item.property.description,
+
+        ownerPhone: item.property.ownerPhone,
+
+        address: item.property.address,
+
+        latitude: item.property.latitude,
+
+        longitude: item.property.longitude,
+
+        propertyTypeId: item.property.propertyTypeId,
+
+        commune: item.property.commune,
+
+        image:
+          item.property.images?.length > 0
+            ? item.property.images[0].url
+            : "https://placehold.co/600x400",
+
+      }));
+
+      setProperties(mappedProperties);
+
+    } catch (error) {
+
+      console.error(error);
+
+      setProperties([]);
+
+    } finally {
+
+      // Espera al siguiente render antes de ocultar el loader
+      requestAnimationFrame(() => {
+        setLoading(false);
+      });
+
+    }
+
+  };
+
+  loadProperties();
+
+}, []);
 
   // 🔥 LOAD PROPERTY TYPES
   useEffect(() => {
@@ -263,14 +259,25 @@ const SearchResults = ({
       );
     });
 
-  if (loading) {
+if (loading) {
+  return (
+    <div className={styles.loadingContainer}>
 
-    return (
-      <h2>
+      <img
+        src="/Logotipoo.png"
+        alt="PuertoHogar"
+        className={styles.loadingLogo}
+      />
+
+      <div className={styles.spinner}></div>
+
+      {/* <p className={styles.loadingText}>
         Cargando propiedades...
-      </h2>
-    );
-  }
+      </p> */}
+
+    </div>
+  );
+}
 
   return (
 
@@ -312,7 +319,7 @@ const SearchResults = ({
                   }
 
                   onHover={() =>
-                    setSelectedProperty(index)
+                    setSelectedProperty(property.id)
                   }
                 />
 

@@ -33,18 +33,34 @@ L.Icon.Default.mergeOptions({
 // =======================
 
 const FlyToProperty = ({ property }) => {
-
     const map = useMap();
 
     useEffect(() => {
+        console.log("========== FLY TO ==========");
+        console.log(property);
 
-        if (!property) return;
+        if (!property) {
+            console.log("No hay propiedad");
+            return;
+        }
 
-        const lat = Number(property.latitude);
-        const lng = Number(property.longitude);
+        const lat = parseFloat(property.latitude);
+        const lng = parseFloat(property.longitude);
 
-        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-            console.warn("FlyTo cancelado:", lat, lng);
+        console.log("latitude:", property.latitude);
+        console.log("longitude:", property.longitude);
+
+        console.log("lat:", lat);
+        console.log("lng:", lng);
+
+        console.log("isFinite(lat):", Number.isFinite(lat));
+        console.log("isFinite(lng):", Number.isFinite(lng));
+
+        if (
+            !Number.isFinite(lat) ||
+            !Number.isFinite(lng)
+        ) {
+            console.error("Coordenadas inválidas");
             return;
         }
 
@@ -126,12 +142,9 @@ const MapView = ({
   console.log("========== FILTRADAS ==========");
   console.log(propertiesWithCoords);
 
-  const activeProperty =
-    Number.isInteger(selectedProperty) &&
-    selectedProperty >= 0 &&
-    selectedProperty < propertiesWithCoords.length
-        ? propertiesWithCoords[selectedProperty]
-        : null;
+  const activeProperty = propertiesWithCoords.find(
+    property => property.id === selectedProperty
+  ) || null;
 
   return (
     <div className={styles.mapContainer}>
@@ -156,7 +169,7 @@ const MapView = ({
             key={property.id ?? index}
             position={property.position}
             eventHandlers={{
-              click: () => setSelectedProperty(index),
+              click: () => setSelectedProperty(property.id),
             }}
           >
 

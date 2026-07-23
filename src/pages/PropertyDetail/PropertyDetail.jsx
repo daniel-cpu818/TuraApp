@@ -67,12 +67,54 @@ const PropertyDetail = () => {
   }, [id]);
 
   if (loading) {
-    return <h2>Cargando propiedad...</h2>;
+    return (
+      <div className={styles.loadingContainer}>
+  
+        <img
+          src="/Logotipoo.png"
+          alt="PuertoHogar"
+          className={styles.loadingLogo}
+        />
+  
+        <div className={styles.spinner}></div>
+  
+        {/* <p className={styles.loadingText}>
+          Cargando propiedades...
+        </p> */}
+  
+      </div>
+    );
   }
 
   if (!property) {
-    return <h2>Propiedad no encontrada</h2>;
-  }
+  return (
+
+    <div className={styles.notFound}>
+
+      {/* <img
+        src="/logo.png"
+        alt="PuertoHogar"
+        className={styles.notFoundLogo}
+      /> */}
+
+      <h2>Propiedad no encontrada</h2>
+
+      <p>
+        Es posible que esta publicación haya sido eliminada
+        o que el enlace ya no sea válido.
+      </p>
+
+      <button
+        className={styles.backHome}
+        onClick={() => navigate("/")}
+      >
+        Volver al inicio
+      </button>
+
+    </div>
+
+  );
+}
 
   const handleContact = () => {
     const phone = `57${property.ownerPhone}`;

@@ -13,7 +13,8 @@ const Navbar = ({
 }) => {
   const [currentUser, setCurrentUser] =
   useState(null);
-
+  const [hidden, setHidden] = useState(false);
+  
   const [showProfileModal, setShowProfileModal] =
   useState(false);
 
@@ -36,6 +37,34 @@ const Navbar = ({
     getAccessTokenSilently
 
   } = useAuth0();
+
+  useEffect(() => {
+    let lastScroll = window.scrollY;
+
+    const handleScroll = () => {
+        const currentScroll = window.scrollY;
+
+        // Siempre mostrar arriba del todo
+        if (currentScroll < 20) {
+            setHidden(false);
+        }
+        // Bajando
+        else if (currentScroll > lastScroll) {
+            setHidden(true);
+        }
+        // Subiendo
+        else {
+            setHidden(false);
+        }
+
+        lastScroll = currentScroll;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () =>
+        window.removeEventListener("scroll", handleScroll);
+}, []);
 
   // 🔥 sync automático
   useEffect(() => {
@@ -177,7 +206,11 @@ const handleCompleteProfile =
 
  return (
   <>
-    <nav className={styles.navbar}>
+    <nav
+    className={`${styles.navbar} ${
+        hidden ? styles.hidden : ""
+    }`}
+    >
 
       {/* 🔴 LOGO */}
     <div className={styles.logo}>
